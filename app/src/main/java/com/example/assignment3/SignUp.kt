@@ -28,40 +28,40 @@ class SignUp : AppCompatActivity() {
         })
         et_age.setOnFocusChangeListener(OnFocusChangeListener { v: View?, hasFocus: Boolean ->
             if (!hasFocus)
-                if (et_age.text.toString().isEmpty()) {
+                if (et_age.text.toString().trim().isEmpty()) {
                     et_age.error = "Age can't be empty"
                 }
         })
 
         et_phone.setOnFocusChangeListener(OnFocusChangeListener { v: View?, hasFocus: Boolean ->
             if (!hasFocus)
-                if (et_phone.text.toString().isEmpty()) {
+                if (et_phone.text.toString().trim().isEmpty()) {
                     et_phone.error = "Phone can't be empty"
                 }
         })
 
         et_name.setOnFocusChangeListener(OnFocusChangeListener { v: View?, hasFocus: Boolean ->
             if (!hasFocus)
-                if (et_name.text.toString().isEmpty()) {
+                if (et_name.text.toString().trim().isEmpty()) {
                     et_name.error = "Name can't be empty"
                 }
         })
         et_pass.setOnFocusChangeListener(OnFocusChangeListener { v: View?, hasFocus: Boolean ->
             if (!hasFocus)
-                if (et_pass.text.toString().isEmpty()) {
+                if (et_pass.text.toString().trim().isEmpty()) {
                     et_pass.error = "Password can't be empty"
                 }
         })
         et_reType_pass.setOnFocusChangeListener(OnFocusChangeListener { v: View?, hasFocus: Boolean ->
             if (!hasFocus)
-                if (et_reType_pass.text.toString().isEmpty()) {
+                if (et_reType_pass.text.toString().trim().isEmpty()) {
                     et_reType_pass.error = "Password can't be empty"
                 }
         })
         et_website.setOnFocusChangeListener(OnFocusChangeListener { v: View?, hasFocus: Boolean ->
             if (!hasFocus)
 
-                if (et_website.text.toString().isEmpty()) {
+                if (et_website.text.toString().trim().isEmpty()) {
 
                     et_website.error = "Web Url can't be empty"
 
@@ -81,11 +81,11 @@ class SignUp : AppCompatActivity() {
 
                         if (et_pass.text.toString() == et_reType_pass.text.toString()) {
                             myPreferences.userName = et_name.text.toString()
-                            myPreferences.age = et_age.text.toString().toInt()
-                            myPreferences.phone = et_phone.text.toString().toInt()
-                            myPreferences.userEmail = et_mail.text.toString()
-                            myPreferences.userPassword = et_pass.text.toString()
-                            myPreferences.webUrl = et_website.text.toString()
+                            myPreferences.age = et_age.text?.trim().toString().toInt()
+                            myPreferences.phone = et_phone.text?.trim().toString()
+                            myPreferences.userEmail = et_mail.text?.trim().toString()
+                            myPreferences.userPassword = et_pass.text?.trim().toString()
+                            myPreferences.webUrl = et_website.text?.trim().toString()
 
                             val intent = Intent(this, MainActivity::class.java)
                             startActivity(intent)

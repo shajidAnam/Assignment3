@@ -40,13 +40,13 @@ class MyPreferences private constructor(context: Context) {
             editor.putInt("AGE", age)
             editor.apply()
         }
-    var phone: Int
-        get() = sharedPreferences.getInt(
+    var phone: String?
+        get() = sharedPreferences.getString(
             "PHONE",
-            -1
+            "phone number not valid"
         )
         set(phone) {
-            editor.putInt("PHONE", phone)
+            editor.putString("PHONE", phone)
             editor.apply()
         }
 
