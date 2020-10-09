@@ -181,6 +181,71 @@
                 android:textSize="22sp"
                 app:layout_constraintStart_toStartOf="@id/tv_name"
                 app:layout_constraintTop_toBottomOf="@id/tv_reType_pass" />
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tv_gender"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/gender"
+                android:textSize="22sp"
+                android:textColor="@color/textColor"
+                android:layout_marginTop="30dp"
+                app:layout_constraintStart_toStartOf="@id/tv_name"
+                app:layout_constraintTop_toBottomOf="@id/et_reType_pass" />
+            <RadioGroup
+                android:id="@+id/radio_group"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_marginTop="30dp"
+                app:layout_constraintStart_toStartOf="@id/et_name"
+                app:layout_constraintTop_toTopOf="@id/tv_gender">
+
+                <androidx.appcompat.widget.AppCompatRadioButton
+                    android:id="@+id/radio_male"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/male"
+                    android:checked="true"
+                    android:textSize="22sp"
+                    android:layout_marginTop="15dp"
+                    android:textColor="@color/textColor"/>
+
+                <androidx.appcompat.widget.AppCompatRadioButton
+                    android:id="@+id/radio_female"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/female"
+                    android:textSize="22sp"
+                    android:layout_marginTop="15dp"
+                    android:textColor="@color/textColor" />
+            </RadioGroup>
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tv_notification"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintStart_toStartOf="@id/tv_name"
+                app:layout_constraintTop_toBottomOf="@id/radio_group"
+                android:layout_marginTop="30dp"
+                android:text="@string/notification"
+                android:textColor="@color/textColor"
+                android:textSize="22sp"/>
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tv_notificationValue"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintStart_toStartOf="@id/tv_name"
+                app:layout_constraintTop_toBottomOf="@id/tv_notification"
+                android:textSize="18sp"
+                android:textColor="@color/textColor"
+                android:layout_marginTop="15dp"/>
+            <CheckBox
+                android:id="@+id/checkbox"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@id/tv_notificationValue"
+                app:layout_constraintBottom_toBottomOf="@id/tv_notificationValue"/>
+
 
             <Button
                 android:id="@+id/btn_signup"
@@ -195,7 +260,7 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/et_reType_pass">
+                app:layout_constraintTop_toBottomOf="@id/tv_notificationValue">
 
             </Button>
 

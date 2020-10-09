@@ -7,9 +7,12 @@ import android.view.animation.LinearInterpolator
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import com.agrawalsuneet.loaderspack.loaders.CurvesLoader
+import com.example.assignment3.sharedPreferences.sharedPreference
+import com.example.assignment3.sharedPreferences.sharedPreferencesImplement
+import kotlinx.android.synthetic.main.activity_splash_screen.*
 
 class SplashScreen : AppCompatActivity() {
-    private lateinit var myPreferences: MyPreferences
+    private lateinit var SharedPreference : sharedPreference
 
     private lateinit var handler: Handler
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -17,12 +20,14 @@ class SplashScreen : AppCompatActivity() {
         setContentView(R.layout.activity_splash_screen)
         supportActionBar?.hide()
         handler = Handler()
+
+
         handler.postDelayed({
             checkLogin()
 
 
         }, 5000)
-       myPreferences = MyPreferences.getPreferences(this)!!
+        SharedPreference= sharedPreferencesImplement(this)
 
 
         CurvesLoader(
@@ -41,23 +46,16 @@ class SplashScreen : AppCompatActivity() {
 
   }
     private fun checkLogin(){
-        if (myPreferences != null) {
-            if (myPreferences.islogin() ){
-                val intent = Intent(this, Profile::class.java)
-                startActivity(intent)
-                finish()
+        if (SharedPreference.getBoolean(sharedPreference.LOGINFLAG)!!){
+            val intent = Intent(this, Profile::class.java)
+            startActivity(intent)
+            finish()
 
-                } else {
-                val intent = Intent(this, MainActivity::class.java)
-                startActivity(intent)
-                finish()
-
-            }
-        }
-        else{
+            } else {
             val intent = Intent(this, MainActivity::class.java)
             startActivity(intent)
             finish()
+
         }
     }
 

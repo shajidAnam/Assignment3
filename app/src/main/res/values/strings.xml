@@ -28,4 +28,8 @@
     <string name="enter_your_old_password">Enter your old password</string>
     <string name="enter_new_password">Enter new password</string>
     <string name="change_password">Change password</string>
+    <string name="gender">Gender</string>
+    <string name="male">Male</string>
+    <string name="female">Female</string>
+    <string name="notification">Notification</string>
 </resources>

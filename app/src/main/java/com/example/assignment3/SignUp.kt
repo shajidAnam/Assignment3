@@ -5,72 +5,94 @@ import android.os.Bundle
 import android.text.TextUtils
 import android.util.Patterns
 import android.view.View
-import android.view.View.OnFocusChangeListener
 import android.webkit.URLUtil
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import com.example.assignment3.sharedPreferences.sharedPreference
+import com.example.assignment3.sharedPreferences.sharedPreferencesImplement
 import kotlinx.android.synthetic.main.activity_sign_up.*
 
 
 class SignUp : AppCompatActivity() {
-    lateinit var  myPreferences: MyPreferences
+    private lateinit var SharedPreference : sharedPreference
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_sign_up)
-        myPreferences = MyPreferences.getPreferences(this)!!
+        SharedPreference= sharedPreferencesImplement(this)
+        var gender=""
+        var checkboxValue=true
 
-        et_mail.setOnFocusChangeListener(OnFocusChangeListener { v, hasFocus ->
+        radio_group.setOnCheckedChangeListener { _, checkedID ->
+            if (checkedID == R.id.radio_male) {
+                gender = radio_male.text.toString()
+
+            }
+            if (checkedID == R.id.radio_female) {
+                gender = radio_female.text.toString()
+            }
+        }
+        checkbox.setOnCheckedChangeListener { buttonView, isChecked ->
+
+            if (buttonView.isChecked){
+                tv_notificationValue.text = "enabled"
+                checkboxValue=true}
+
+            else{
+                tv_notificationValue.text = "disabled"
+                checkboxValue=false}
+        }
+
+        et_mail.setOnFocusChangeListener { _, hasFocus ->
             if (!hasFocus)
                 if (isValidEmail(et_mail.text.toString())) {
 
                 } else
                     et_mail.error = "Enter a valid email address"
-        })
-        et_age.setOnFocusChangeListener(OnFocusChangeListener { v: View?, hasFocus: Boolean ->
+        }
+        et_age.setOnFocusChangeListener { _: View?, hasFocus: Boolean ->
             if (!hasFocus)
                 if (et_age.text.toString().trim().isEmpty()) {
                     et_age.error = "Age can't be empty"
                 }
-        })
+        }
 
-        et_phone.setOnFocusChangeListener(OnFocusChangeListener { v: View?, hasFocus: Boolean ->
+        et_phone.setOnFocusChangeListener { _: View?, hasFocus: Boolean ->
             if (!hasFocus)
                 if (et_phone.text.toString().trim().isEmpty()) {
                     et_phone.error = "Phone can't be empty"
                 }
-        })
+        }
 
-        et_name.setOnFocusChangeListener(OnFocusChangeListener { v: View?, hasFocus: Boolean ->
+        et_name.setOnFocusChangeListener { _: View?, hasFocus: Boolean ->
             if (!hasFocus)
                 if (et_name.text.toString().trim().isEmpty()) {
                     et_name.error = "Name can't be empty"
                 }
-        })
-        et_pass.setOnFocusChangeListener(OnFocusChangeListener { v: View?, hasFocus: Boolean ->
+        }
+        et_pass.setOnFocusChangeListener { _: View?, hasFocus: Boolean ->
             if (!hasFocus)
                 if (et_pass.text.toString().trim().isEmpty()) {
                     et_pass.error = "Password can't be empty"
                 }
-        })
-        et_reType_pass.setOnFocusChangeListener(OnFocusChangeListener { v: View?, hasFocus: Boolean ->
+        }
+        et_reType_pass.setOnFocusChangeListener { _: View?, hasFocus: Boolean ->
             if (!hasFocus)
                 if (et_reType_pass.text.toString().trim().isEmpty()) {
                     et_reType_pass.error = "Password can't be empty"
                 }
-        })
-        et_website.setOnFocusChangeListener(OnFocusChangeListener { v: View?, hasFocus: Boolean ->
+        }
+        et_website.setOnFocusChangeListener { _: View?, hasFocus: Boolean ->
             if (!hasFocus)
 
                 if (et_website.text.toString().trim().isEmpty()) {
 
                     et_website.error = "Web Url can't be empty"
 
-                }
-            else
-                    if(URLUtil.isValidUrl(et_website.text.toString()))
-                        else  et_website.error = "Web Url formation is wrong"
+                } else
+                    if (URLUtil.isValidUrl(et_website.text.toString()))
+                    else et_website.error = "Web Url formation is wrong"
 
-        })
+        }
 
 
 
@@ -80,12 +102,15 @@ class SignUp : AppCompatActivity() {
                     if (isValidEmail(et_mail.text.toString())) {
 
                         if (et_pass.text.toString() == et_reType_pass.text.toString()) {
-                            myPreferences.userName = et_name.text.toString()
-                            myPreferences.age = et_age.text?.trim().toString().toInt()
-                            myPreferences.phone = et_phone.text?.trim().toString()
-                            myPreferences.userEmail = et_mail.text?.trim().toString()
-                            myPreferences.userPassword = et_pass.text?.trim().toString()
-                            myPreferences.webUrl = et_website.text?.trim().toString()
+                            SharedPreference.setString(sharedPreference.NAME,et_name.text.toString())
+                            SharedPreference.setInt(sharedPreference.AGE,et_age.text?.trim().toString().toInt())
+                            SharedPreference.setString(sharedPreference.PHONE,et_phone.text?.trim().toString())
+                            SharedPreference.setString(sharedPreference.EMAIL,et_mail.text.toString())
+                            SharedPreference.setString(sharedPreference.PASSWORD,et_pass.text.toString())
+                            SharedPreference.setString(sharedPreference.WEBURL,et_website.text.toString())
+                            SharedPreference.setString(sharedPreference.GENDER,gender)
+                            SharedPreference.setBoolean(sharedPreference.CHECKBOXVALUE,checkboxValue)
+
 
                             val intent = Intent(this, MainActivity::class.java)
                             startActivity(intent)
