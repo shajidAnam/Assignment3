@@ -32,4 +32,7 @@
     <string name="male">Male</string>
     <string name="female">Female</string>
     <string name="notification">Notification</string>
+    <string name="image_url">Image Url:</string>
+    <string name="enter_image_url">Enter image url</string>
+    <string name="enabled">enabled</string>
 </resources>

@@ -1,9 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="match_parent">
+
+<androidx.constraintlayout.widget.ConstraintLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/backgroundTheme"
     tools:context=".Profile">
     <androidx.appcompat.widget.AppCompatImageView
         android:id="@+id/iv_glide"
@@ -11,7 +17,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"/>
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/tv_name_output"/>
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/tv_name_output"
         android:layout_width="wrap_content"
@@ -43,6 +51,76 @@
         android:drawableStart="@drawable/ic_baseline_email_24"
         app:layout_constraintStart_toStartOf="@id/tv_name_output"
         app:layout_constraintTop_toBottomOf="@id/tv_phone_output"/>
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tv_gender_output"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/gender"
+        android:textSize="22sp"
+        android:textColor="@color/textColor"
+        android:layout_marginTop="30dp"
+        app:layout_constraintStart_toStartOf="@id/tv_name_output"
+        app:layout_constraintTop_toBottomOf="@id/tv_email_output" />
+    <RadioGroup
+        android:id="@+id/radio_group_output"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginTop="30dp"
+        app:layout_constraintStart_toStartOf="@id/tv_name_output"
+        app:layout_constraintTop_toTopOf="@id/tv_gender_output">
+
+        <androidx.appcompat.widget.AppCompatRadioButton
+            android:id="@+id/radio_male"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/male"
+            android:checked="true"
+            android:buttonTint="@color/textColor"
+            android:textSize="22sp"
+            android:layout_marginTop="15dp"
+            android:textColor="@color/textColor"/>
+
+        <androidx.appcompat.widget.AppCompatRadioButton
+            android:id="@+id/radio_female"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/female"
+            android:textSize="22sp"
+            android:buttonTint="@color/textColor"
+            android:layout_marginTop="15dp"
+            android:textColor="@color/textColor" />
+    </RadioGroup>
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tv_notification_output"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="@id/tv_name_output"
+        app:layout_constraintTop_toBottomOf="@id/radio_group_output"
+        android:layout_marginTop="30dp"
+        android:text="@string/notification"
+        android:textColor="@color/textColor"
+        android:textSize="22sp"/>
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tv_notificationValue_output"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/enabled"
+        app:layout_constraintStart_toStartOf="@id/tv_name_output"
+        app:layout_constraintTop_toBottomOf="@id/tv_notification_output"
+        android:textSize="18sp"
+        android:textColor="@color/textColor"
+        android:layout_marginTop="15dp"/>
+    <CheckBox
+        android:id="@+id/checkbox_output"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:buttonTint="@color/textColor"
+        android:checked="true"
+        app:layout_constraintTop_toTopOf="@id/tv_notificationValue_output"
+        app:layout_constraintBottom_toBottomOf="@id/tv_notificationValue_output"/>
+
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/btn_webUrl"
         android:layout_width="match_parent"
@@ -54,7 +132,7 @@
         android:textAllCaps="false"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tv_email_output"
+        app:layout_constraintTop_toBottomOf="@id/checkbox_output"
         android:layout_marginTop="40dp"/>
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/btn_changePassword"
@@ -98,3 +176,4 @@
         app:layout_constraintTop_toBottomOf="@id/btn_ediProfile"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>

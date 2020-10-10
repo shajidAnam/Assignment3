@@ -54,6 +54,7 @@ class MainActivity : AppCompatActivity() {
 
         btn_register.setOnClickListener {
             val intent = Intent(this, SignUp::class.java)
+            SharedPreference.setInt(sharedPreference.FLAG,0)
             startActivity(intent)
             finish()
 

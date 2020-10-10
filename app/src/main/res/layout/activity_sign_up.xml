@@ -233,6 +233,7 @@
                 android:id="@+id/tv_notificationValue"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:text="@string/enabled"
                 app:layout_constraintStart_toStartOf="@id/tv_name"
                 app:layout_constraintTop_toBottomOf="@id/tv_notification"
                 android:textSize="18sp"
@@ -243,8 +244,32 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 app:layout_constraintEnd_toEndOf="parent"
+                android:checked="true"
                 app:layout_constraintTop_toTopOf="@id/tv_notificationValue"
                 app:layout_constraintBottom_toBottomOf="@id/tv_notificationValue"/>
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tv_imageUrl"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/textColor"
+                android:textSize="22sp"
+                android:layout_marginTop="30dp"
+                android:text="@string/image_url"
+                app:layout_constraintStart_toStartOf="@id/tv_name"
+                app:layout_constraintTop_toBottomOf="@id/checkbox"
+                />
+            <androidx.appcompat.widget.AppCompatEditText
+                android:id="@+id/et_imageUrl"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="22sp"
+                android:textColor="@color/textColor"
+                android:hint="@string/enter_image_url"
+                android:textColorHint="@color/hintColor"
+                android:layout_marginTop="30dp"
+                app:layout_constraintStart_toStartOf="@id/tv_name"
+                app:layout_constraintTop_toBottomOf="@id/tv_imageUrl"
+                android:inputType="textWebEditText"/>
 
 
             <Button
@@ -260,7 +285,7 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/tv_notificationValue">
+                app:layout_constraintTop_toBottomOf="@id/et_imageUrl">
 
             </Button>
 

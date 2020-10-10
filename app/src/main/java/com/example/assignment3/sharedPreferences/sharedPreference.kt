@@ -10,8 +10,9 @@ interface sharedPreference {
         const val WEBURL="weburl"
         const val LOGINFLAG="loginflag"
         const val GENDER="gender"
-        const val WEIGHT="weight"
         const val CHECKBOXVALUE="checkboxValue"
+        const val IMAGEURL="imageUrl"
+        const val FLAG="flag"
 
     }
     fun getString(key:String):String?
